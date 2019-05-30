@@ -9,3 +9,7 @@
 #version 0.2.0
 1. Basic functions are finished, and I'm working on debugging.
 2. Instructions cannot be read in.
+
+#version 0.3.0
+1. Fix some code problems in previous version.
+2. Over fix leads to PC doesn't increase.

@@ -40,12 +40,12 @@ module Executs32(Read_data_1, Read_data_2, Sign_extend, Function_opcode, Exe_opc
 always @* begin  // 6种移位指令
        if(Sftmd)
         case(Sftm[2:0])
-            3'b000:Sinput =	Ainput << Binput;		   //Sll rd,rt,shamt  00000
-            3'b010:Sinput = Ainput >> Binput; 		       //Srl rd,rt,shamt  00010
-            3'b100:Sinput = Ainput << $signed(Binput);                   //Sllv rd,rt,rs 000100
-            3'b110:Sinput = Ainput >> $signed(Binput);                   //Srlv rd,rt,rs 000110
-            3'b011:Sinput = Ainput >>> Binput;         		//Sra rd,rt,shamt 00011
-            3'b111:Sinput = Ainput >>> $signed(Binput);		        //Srav rd,rt,rs 00111
+            3'b000:Sinput =	Binput << Shamt;		   //Sll rd,rt,shamt  00000
+            3'b010:Sinput = Binput >> Shamt; 		       //Srl rd,rt,shamt  00010
+            3'b100:Sinput = Binput << Ainput;                   //Sllv rd,rt,rs 000100
+            3'b110:Sinput = Binput >> Ainput;                   //Srlv rd,rt,rs 000110
+            3'b011:Sinput = $signed(Binput) >>> Shamt;         		//Sra rd,rt,shamt 00011
+            3'b111:Sinput = $signed(Binput) >>> Ainput;		        //Srav rd,rt,rs 00111
             default:Sinput = Binput;
         endcase
        else Sinput = Binput;
@@ -54,12 +54,12 @@ always @* begin  // 6种移位指令
     always @* begin
         if (((ALU_ctl==3'b111) && (Exe_code[3]==1))||((ALU_ctl[2:1]==2'b11) && (I_format==1))) //slti(sub)  处理所有SLT类的问题
             ALU_Result = ALU_output_mux < 0 ? 1 : 0;
-        else if ((ALU_ctl==3'b101) && (I_format==1)) ALU_Result[31:0] = {{ALU_output_mux[31:16]}, {16{1'b0}}};   //lui data
+        else if ((ALU_ctl==3'b101) && (I_format==1)) ALU_Result[31:0] = {{Sign_extend[15:0]}, {16{1'b0}}};   //lui data
         else if (Sftmd==1) ALU_Result = Sinput;   //  移位
         else ALU_Result = ALU_output_mux[31:0];   //otherwise
     end
  
-    assign Branch_Add = PC_plus_4[31:2] + Sign_extend[31:0];
+    assign Branch_Add = PC_plus_4[31:0] + Sign_extend[31:0];
     assign Add_Result = Branch_Add[31:0];   //算出的下一个PC值已经做了除4处理，所以不需左移16位
     assign Zero = (ALU_output_mux[31:0]== 32'h00000000) ? 1'b1 : 1'b0;
     
@@ -68,11 +68,21 @@ always @* begin  // 6种移位指令
             3'b000:ALU_output_mux = Ainput & Binput;
             3'b001:ALU_output_mux = Ainput | Binput;
             3'b010:ALU_output_mux = $signed(Ainput) + $signed(Binput);
-            3'b011:ALU_output_mux = Ainput + Binput;
+            3'b011:ALU_output_mux = $unsigned(Ainput) + $unsigned(Binput);
             3'b100:ALU_output_mux = Ainput ^ Binput;
             3'b101:ALU_output_mux = I_format ? Binput << 16 : ~(Ainput | Binput);
-            3'b110:ALU_output_mux = $signed(Ainput) - $signed(Binput);
-            3'b111:ALU_output_mux = Ainput - Binput;
+            3'b110:begin
+                if (!I_format) ALU_output_mux = $signed(Ainput) - $signed(Binput);
+                else if (Function_opcode == 6'b000100 || Function_opcode == 6'b000101) ALU_output_mux = Ainput - Binput;
+                else ALU_output_mux = $signed(Ainput) < $signed(Binput);
+            end
+            3'b111:begin
+                if (!I_format) begin
+                    if (Function_opcode == 6'b100011) ALU_output_mux = $unsigned(Ainput) - $unsigned(Binput);
+                    else if (Function_opcode == 6'b101011) ALU_output_mux = $unsigned(Ainput) < $unsigned(Binput);
+                    else ALU_output_mux = $signed(Ainput) < $signed(Binput);
+                end else ALU_output_mux = $unsigned(Ainput) < $unsigned(Binput);
+            end
             default:ALU_output_mux = 32'h00000000;
         endcase
     end

@@ -12,7 +12,7 @@ module Idecode32(read_data_1,read_data_2,Instruction,read_data,ALU_result,
     input        RegWrite;                  // 来自控制单元
     input        MemtoReg;              // 来自控制单元
     input        RegDst;                    //  来自控制单元
-    output[31:0] Sign_extend;               // 译码单元输出的扩展后的32位立即数
+    output reg [31:0] Sign_extend;               // 译码单元输出的扩展后的32位立即数
     input		 clock,reset;                // 时钟和复位
     input[31:0]  opcplus4;                 // 来自取指单元，JAL中用
     output[4:0]  read_register_1_address;
@@ -40,15 +40,23 @@ module Idecode32(read_data_1,read_data_2,Instruction,read_data,ALU_result,
     wire sign;                                            // 取符号位的值
 
     assign sign = Instruction[15];
-    assign Sign_extend[31:0] = {{16{sign}},{Instruction_immediate_value[15:0]}};
+    
+    always @* begin
+        if(opcode==12 || opcode==13) Sign_extend[31:0] = {{16{1'b0}}, {Instruction_immediate_value}};
+        else if (opcode==4 || opcode==5) Sign_extend[31:0] = {{14{sign}}, {Instruction_immediate_value}, {2'b0}};
+        else Sign_extend[31:0] = {{16{sign}}, {Instruction_immediate_value}};
+    end
     
     assign read_data_1 = register[read_register_1_address];
     assign read_data_2 = register[read_register_2_address];
     
     always @* begin                                            //这个进程指定不同指令下的目标寄存器
         if (Jal) write_register_address = 31;
-        if (RegDst) write_register_address = write_register_address_1;
-        else write_register_address = write_register_address_0;
+        else begin
+            if (opcode == 0) write_register_address = write_register_address_1;
+            else if (opcode == 2 || opcode == 3) write_register_address = Instruction[25:0];
+            else write_register_address = write_register_address_0;
+        end
     end
     
     always @* begin  //这个进程基本上是实现结构图中右下的多路选择器,准备要写的数据

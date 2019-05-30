@@ -6,17 +6,17 @@ module minisys(clk, rst, switch2N4, led2N4);
     input [23:0] switch2N4;
     output [23:0] led2N4;
     
-    reg clk_out = 1'b0;
-    wire [31:0] PC = 32'h00000000;
-    wire [31:0] Instruction = 32'h00000000;
-    wire Branch = 1'b0;
-    wire nBranch = 1'b0;
-    wire Jmp = 1'b0;
-    wire Jal = 1'b0;
-    wire Jrn = 1'b0;
-    wire Zero = 1'b0;
-    wire Lw = 1'b0;
-    wire Sw = 1'b0;
+    reg clk_out;
+    wire [31:0] PC;
+    wire [31:0] Instruction;
+    wire Branch;
+    wire nBranch;
+    wire Jmp;
+    wire Jal;
+    wire Jrn;
+    wire Zero;
+    wire Lw;
+    wire Sw;
     wire [31:0] Register[0:31];
     
     wire [31:0] ALU_result;
