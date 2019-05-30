@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Thu May 30 17:02:40 2019
+# Process ID: 17284
+# Current directory: C:/Users/Enderaoe/Vivado/minisys/minisys.runs/clock_synth_1
+# Command line: vivado.exe -log clock.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source clock.tcl
+# Log file: C:/Users/Enderaoe/Vivado/minisys/minisys.runs/clock_synth_1/clock.vds
+# Journal file: C:/Users/Enderaoe/Vivado/minisys/minisys.runs/clock_synth_1\vivado.jou
+#-----------------------------------------------------------
+source clock.tcl -notrace
