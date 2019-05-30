@@ -13,3 +13,7 @@
 #version 0.3.0
 1. Fix some code problems in previous version.
 2. Over fix leads to PC doesn't increase.
+
+#version 1.0.0
+1. Well designed version that can work well in simulation.
+2. Tesing on minisys board.
