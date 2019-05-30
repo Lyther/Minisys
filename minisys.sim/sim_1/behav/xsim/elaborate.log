@@ -1,17 +1,11 @@
 Vivado Simulator 2017.4
 Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
-Running: D:/Vivado/Vivado/2017.4/bin/unwrapped/win64.o/xelab.exe -wto 1332d8341a854dd2bf683d5263299dd5 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot clock_sim_behav xil_defaultlib.clock_sim xil_defaultlib.glbl -log elaborate.log 
+Running: D:/Vivado/Vivado/2017.4/bin/unwrapped/win64.o/xelab.exe -wto 1332d8341a854dd2bf683d5263299dd5 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot minisys_sim_behav xil_defaultlib.minisys_sim xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
+WARNING: [VRFC 10-278] actual bit length 15 differs from formal bit length 14 for port PC15_2 [C:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/new/minisys.v:65]
+WARNING: [VRFC 10-278] actual bit length 16 differs from formal bit length 24 for port switchrdata [C:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/new/minisys.v:73]
+WARNING: [VRFC 10-142] PC15_2 was previously declared with a different range [C:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/new/Ifetc32.v:25]
+WARNING: [VRFC 10-142] switchrdata was previously declared with a different range [C:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/new/switchs.v:13]
 Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling module unisims_ver.BUFG
-Compiling module unisims_ver.IBUF
-Compiling module unisims_ver.PLLE2_ADV(CLKFBOUT_MULT=46,CLKIN...
-Compiling module xil_defaultlib.clock_clock_clk_wiz
-Compiling module xil_defaultlib.clock
-Compiling module xil_defaultlib.clock_sim
-Compiling module xil_defaultlib.glbl
-Built simulation snapshot clock_sim_behav
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel

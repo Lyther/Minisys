@@ -5,3 +5,7 @@
 #version 0.1.1
 1. Finished clock design and simulation: after 620ns then the clock signal divides correct.
 2. All the modules are created.
+
+#version 0.2.0
+1. Basic functions are finished, and I'm working on debugging.
+2. Instructions cannot be read in.
