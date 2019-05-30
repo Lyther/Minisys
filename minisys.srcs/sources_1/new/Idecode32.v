@@ -45,20 +45,16 @@ module Idecode32(read_data_1,read_data_2,Instruction,read_data,ALU_result,
     assign read_data_1 = register[read_register_1_address];
     assign read_data_2 = register[read_register_2_address];
     
-    always @* begin                                            //这个进程指定不同指令下的目标寄存器
+    integer i;
+    always @(clock) begin  //这个进程基本上是实现结构图中右下的多路选择器,准备要写的数据
         if (Jal) write_register_address = 31;
         if (RegDst) write_register_address = write_register_address_1;
         else write_register_address = write_register_address_0;
-    end
     
-    always @* begin  //这个进程基本上是实现结构图中右下的多路选择器,准备要写的数据
         if (MemtoReg) write_data = read_data;
         else write_data = ALU_result;
         if (Jal) write_data = opcplus4;
-    end
-    
-    integer i;
-    always @(posedge clock) begin       // 本进程写目标寄存器
+        
         if(reset==1) begin              // 初始化寄存器组
             for(i=0;i<32;i=i+1) register[i] <= i;
         end else if(RegWrite==1) begin  // 注意寄存器0恒等于0

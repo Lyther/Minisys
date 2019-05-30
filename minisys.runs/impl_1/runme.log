@@ -1,0 +1,86 @@
+
+*** Running vivado
+    with args -log minisys.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source minisys.tcl -notrace
+
+
+****** Vivado v2017.4 (64-bit)
+  **** SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+  **** IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source minisys.tcl -notrace
+Command: link_design -top minisys -part xc7a100tfgg484-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/ip/clock/clock.dcp' for cell 'clock_u'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/ip/RAM/RAM.dcp' for cell 'dmemory_u/ram'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/ip/prgrom/prgrom.dcp' for cell 'ifetc_u/instmem'
+INFO: [Netlist 29-17] Analyzing 421 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2017.4
+INFO: [Device 21-403] Loading part xc7a100tfgg484-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [c:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/ip/clock/clock_board.xdc] for cell 'clock_u/inst'
+Finished Parsing XDC File [c:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/ip/clock/clock_board.xdc] for cell 'clock_u/inst'
+Parsing XDC File [c:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/ip/clock/clock.xdc] for cell 'clock_u/inst'
+INFO: [Timing 38-35] Done setting XDC timing constraints. [c:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/ip/clock/clock.xdc:57]
+INFO: [Timing 38-2] Deriving generated clocks [c:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/ip/clock/clock.xdc:57]
+get_clocks: Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1154.258 ; gain = 565.289
+Finished Parsing XDC File [c:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/ip/clock/clock.xdc] for cell 'clock_u/inst'
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 30 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+12 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1154.258 ; gain = 921.852
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a100t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[0] has multiple drivers: dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/DOADO[0], and ifetc_u/register_reg[1][0]_i_2/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[10] has multiple drivers: ifetc_u/register_reg[1][10]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[10]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[11] has multiple drivers: ifetc_u/register_reg[1][11]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[11]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[12] has multiple drivers: ifetc_u/register_reg[1][12]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[12]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[13] has multiple drivers: ifetc_u/register_reg[1][13]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[13]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[14] has multiple drivers: ifetc_u/register_reg[1][14]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[14]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[15] has multiple drivers: ifetc_u/register_reg[1][15]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[15]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[16] has multiple drivers: ifetc_u/register_reg[1][16]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[16]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[17] has multiple drivers: ifetc_u/register_reg[1][17]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[17]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[18] has multiple drivers: ifetc_u/register_reg[1][18]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[18]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[19] has multiple drivers: ifetc_u/register_reg[1][19]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[19]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[1] has multiple drivers: dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/DOADO[0], and ifetc_u/register_reg[1][1]_i_2/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[20] has multiple drivers: ifetc_u/register_reg[1][20]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[20]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[21] has multiple drivers: ifetc_u/register_reg[1][21]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[21]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[22] has multiple drivers: ifetc_u/register_reg[1][22]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[22]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[23] has multiple drivers: ifetc_u/register_reg[1][23]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[23]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[24] has multiple drivers: ifetc_u/register_reg[1][24]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[24]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[25] has multiple drivers: ifetc_u/register_reg[1][25]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[25]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[26] has multiple drivers: ifetc_u/register_reg[1][26]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[26]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[27] has multiple drivers: ifetc_u/register_reg[1][27]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[27]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[28] has multiple drivers: ifetc_u/register_reg[1][28]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[28]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[29] has multiple drivers: ifetc_u/register_reg[1][29]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[29]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[2] has multiple drivers: dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/DOADO[1], and ifetc_u/register_reg[1][2]_i_2/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[30] has multiple drivers: ifetc_u/register_reg[1][30]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[30]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[31] has multiple drivers: ifetc_u/register_reg[1][31]_i_3/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[31]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[3] has multiple drivers: dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/DOADO[0], and ifetc_u/register_reg[1][3]_i_2/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[4] has multiple drivers: dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/DOADO[1], and ifetc_u/register_reg[1][4]_i_2/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[5] has multiple drivers: ifetc_u/register_reg[1][5]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[5]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[6] has multiple drivers: ifetc_u/register_reg[1][6]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[6]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[7] has multiple drivers: ifetc_u/register_reg[1][7]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[7]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[8] has multiple drivers: ifetc_u/register_reg[1][8]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[8]_INST_0/O.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net ifetc_u/read_data[9] has multiple drivers: ifetc_u/register_reg[1][9]_i_2/O, and dmemory_u/ram/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[9]_INST_0/O.
+INFO: [Project 1-461] DRC finished with 32 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+ERROR: [Vivado_Tcl 4-78] Error(s) found during DRC. Opt_design not run.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.960 . Memory (MB): peak = 1154.258 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+17 Infos, 0 Warnings, 0 Critical Warnings and 33 Errors encountered.
+opt_design failed
+ERROR: [Common 17-39] 'opt_design' failed due to earlier errors.
+
+INFO: [Common 17-206] Exiting Vivado at Fri May 31 04:03:57 2019...

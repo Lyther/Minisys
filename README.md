@@ -17,3 +17,7 @@
 #version 1.0.0
 1. Well designed version that can work well in simulation.
 2. Tesing on minisys board.
+
+#version 1.0.1
+1. Cannot run implementation.
+2. Finally give up.

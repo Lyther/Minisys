@@ -9,32 +9,4 @@ WARNING: [VRFC 10-142] PC15_2 was previously declared with a different range [C:
 WARNING: [VRFC 10-142] switchrdata was previously declared with a different range [C:/Users/Enderaoe/Vivado/minisys/minisys.srcs/sources_1/new/switchs.v:13]
 WARNING: [VRFC 10-1783] select index 62 into current_contents is out of bounds [/wrk/2017.4/nightly/2017_12_15_2086221/packages/customer/vivado/data/ip/xilinx/blk_mem_gen_v8_4/simulation/blk_mem_gen_v8_4.v:2420]
 Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling module unisims_ver.IBUF
-Compiling module unisims_ver.PLLE2_ADV(CLKFBOUT_MULT=46,CLKIN...
-Compiling module unisims_ver.BUFG
-Compiling module xil_defaultlib.clock_clk_wiz
-Compiling module xil_defaultlib.clock
-Compiling module blk_mem_gen_v8_4_1.blk_mem_gen_v8_4_1_output_stage(...
-Compiling module blk_mem_gen_v8_4_1.blk_mem_gen_v8_4_1_softecc_outpu...
-Compiling module blk_mem_gen_v8_4_1.blk_mem_gen_v8_4_1_mem_module(C_...
-Compiling module blk_mem_gen_v8_4_1.blk_mem_gen_v8_4_1(C_FAMILY="art...
-Compiling module xil_defaultlib.prgrom
-Compiling module xil_defaultlib.Ifetc32
-Compiling module xil_defaultlib.Idecode32
-Compiling module xil_defaultlib.Executs32
-Compiling module xil_defaultlib.control32
-Compiling module blk_mem_gen_v8_4_1.blk_mem_gen_v8_4_1_mem_module(C_...
-Compiling module blk_mem_gen_v8_4_1.blk_mem_gen_v8_4_1(C_FAMILY="art...
-Compiling module xil_defaultlib.RAM
-Compiling module xil_defaultlib.dmemory32
-Compiling module xil_defaultlib.ioread
-Compiling module xil_defaultlib.leds
-Compiling module xil_defaultlib.memorio
-Compiling module xil_defaultlib.switchs
-Compiling module xil_defaultlib.minisys
-Compiling module xil_defaultlib.minisys_sim
-Compiling module xil_defaultlib.glbl
-Built simulation snapshot minisys_sim_behav
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel

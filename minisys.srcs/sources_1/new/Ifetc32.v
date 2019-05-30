@@ -31,20 +31,17 @@ module Ifetc32(Instruction,Add_result,Read_data_1,next_PC,PC_plus_4_out,Branch,n
         .douta(Instruction)         // output wire [31 : 0] douta
     );
 
-    assign PC_plus_4[31:2] = next_PC[29:0];
-    assign PC_plus_4[1:0] = 0;
-    assign PC_plus_4_out = PC_plus_4[31:0];  
+    assign PC_plus_4[31:0] = {{next_PC[29:0]}, {2'b00}};
+    assign PC_plus_4_out = PC_plus_4[31:0];
     assign PC15_2[13:0] = PC[15:2];
 
-    always @* begin  // beq $n ,$m if $n=$m branch   bne if $n /=$m branch jr
+    always @(clock) begin  // beq $n ,$m if $n=$m branch   bne if $n /=$m branch jr
         if (Branch && Zero) begin next_PC = Add_result; PC = next_PC<<2; end
         else if (Branch && ~Zero) next_PC = (PC>>2) + 1;
         else if (nBranch && Zero) next_PC = (PC>>2) + 1;
         else if (nBranch && ~Zero) begin next_PC = Add_result; PC = next_PC<<2; end
         else if (Jrn) begin PC = Read_data_1<<2; next_PC = Read_data_1; end
-    end
-    
-    always @(negedge clock) begin  //（含J，Jal指令和reset的处理）
+        
         if (reset) PC = 0;
         else if (Jmp) PC = Instruction[25:0];
         else if (Jal) begin
